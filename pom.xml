@@ -8,7 +8,7 @@
         <version>2.6.15</version>
     </parent>
 
-    <groupId>com.midea.jr</groupId>
+    <groupId>com.bruce.jr</groupId>
     <artifactId>prometheus-starter</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
