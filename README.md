@@ -6,7 +6,7 @@
 
 ```
 <dependency>
-    <groupId>com.midea.jr</groupId>
+    <groupId>com.bruce.jr</groupId>
     <artifactId>prometheus-starter</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -27,7 +27,7 @@ management.endpoint.health.show-details=always
 resources下新增META-INF/dubbo文件夹，再新增com.alibaba.dubbo.rpc.Filter文件，文件内添加如下内容
 
 ```
-prometheusDubboFilter=com.midea.jr.prometheus.PrometheusDubboFilter
+prometheusDubboFilter=com.bruce.jr.prometheus.PrometheusDubboFilter
 ```
 
 4 RestTemplate配置
