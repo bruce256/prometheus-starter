@@ -14,7 +14,8 @@
 ```
 2 properties配置
 
-```
+prometheus配置
+```properties
 ## 应用名，sample会自动加上一个 application=portal的label对
 management.metrics.tags.application=portal
 ## actuator暴露出prometheus
@@ -22,6 +23,15 @@ management.endpoints.web.exposure.include=prometheus
 management.endpoint.health.show-details=always
 ```
 
+pushgateway配置
+```properties
+management.metrics.export.prometheus.pushgateway.baseUrl=127.0.0.1:9091
+management.metrics.export.prometheus.pushgateway.pushRate=15s
+management.metrics.export.prometheus.pushgateway.job=${spring.application.name}
+management.metrics.export.prometheus.pushgateway.enabled=true
+
+
+```
 3 dubbo配置
 
 resources下新增META-INF/dubbo文件夹，再新增com.alibaba.dubbo.rpc.Filter文件，文件内添加如下内容
@@ -49,6 +59,25 @@ public ApplyTokenResult applyIdentificationToken(@RequestBody @Valid ApplyTokenP
 }
 ```
 
+6 声明式打点
+```java
+    @Autowired
+    private MeterRegistry registry;
+
+    private Counter visitCounter;
+
+    @PostConstruct
+    private void init() {
+        visitCounter = registry.counter("visit.count");
+    }
+
+    @RequestMapping(value = "/test0")
+    public String test0(HttpServletRequest request) {
+
+        visitCounter.increment();
+        return "success";
+    }
+```
 ### 二 Prometheus 配置
 增加一个job
 

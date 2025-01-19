@@ -31,6 +31,11 @@
         </dependency>
 
         <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_pushgateway</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
@@ -61,7 +66,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 
 
 </project>
