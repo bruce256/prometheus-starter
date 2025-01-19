@@ -62,3 +62,6 @@ public ApplyTokenResult applyIdentificationToken(@RequestBody @Valid ApplyTokenP
 
 ### 三 grafana 配置
 按需配置grafana大盘
+
+### FAQ
+1. http://localhost:9099/actuator/prometheus 或者pushgateway看不到监控指标，检查一下Prometheus的依赖是否和springboot配套。如果不配套，则指标无法暴露
