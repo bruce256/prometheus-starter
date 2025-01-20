@@ -46,6 +46,7 @@ public class PrometheusConfig {
                             return DistributionStatisticConfig.builder()
                                 .percentilesHistogram(true)
                                 .percentiles(0.5, 0.90, 0.95, 0.99)
+                                // 加了这个会导致quantile为0，why？
                                 /*.sla(Duration.ofMillis(50).toNanos(),
                                      Duration.ofMillis(100).toNanos(),
                                      Duration.ofMillis(500).toNanos(),
