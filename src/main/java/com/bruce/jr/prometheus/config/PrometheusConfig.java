@@ -46,12 +46,12 @@ public class PrometheusConfig {
                             return DistributionStatisticConfig.builder()
                                 .percentilesHistogram(true)
                                 .percentiles(0.5, 0.90, 0.95, 0.99)
-                                .sla(Duration.ofMillis(50).toNanos(),
+                                /*.sla(Duration.ofMillis(50).toNanos(),
                                      Duration.ofMillis(100).toNanos(),
                                      Duration.ofMillis(500).toNanos(),
                                      Duration.ofSeconds(1).toNanos(),
                                      Duration.ofSeconds(5).toNanos())
-                                .minimumExpectedValue(Duration.ofMillis(1).toNanos())
+                                .minimumExpectedValue(Duration.ofMillis(1).toNanos())*/
                                 // 时间段且访问量小的情况下，可能算不出来
                                 .expiry(Duration.ofMinutes(5))
                                 .build()
@@ -95,12 +95,12 @@ public class PrometheusConfig {
         return "ip not found";
     }
 
-    @Bean
+/*    @Bean
     public FilterRegistrationBean<PrometheusHttpFilter> prometheusHttpFilter() {
         FilterRegistrationBean<PrometheusHttpFilter> singleSignOutFilterBean = new FilterRegistrationBean<>();
         singleSignOutFilterBean.setFilter(new PrometheusHttpFilter());
         singleSignOutFilterBean.setOrder(-1);
         singleSignOutFilterBean.addUrlPatterns(this.urlPattern);
         return singleSignOutFilterBean;
-    }
+    }*/
 }
