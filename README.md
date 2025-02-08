@@ -29,8 +29,35 @@ management.metrics.export.prometheus.pushgateway.baseUrl=127.0.0.1:9091
 management.metrics.export.prometheus.pushgateway.pushRate=15s
 management.metrics.export.prometheus.pushgateway.job=${spring.application.name}
 management.metrics.export.prometheus.pushgateway.enabled=true
+```
 
+yaml格式配置
+```yaml
+### prometheus 及pushgateway 接入
+management:
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    export:
+      prometheus:
+        pushgateway:
+          #pushgateway地址
+          baseUrl: 127.0.0.1:9091
+          #推送周期
+          pushRate: 15s
+          #job定义名
+          job: ${spring.application.name}
+          #启用推送
+          enabled: true
+          grouping-key:
+            hostname: ${HOSTNAME}
 
+### openfeign指标开启
+spring:
+  cloud:
+    openfeign:
+      micrometer:
+        enabled: true
 ```
 3 dubbo配置
 
